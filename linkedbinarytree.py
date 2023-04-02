@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Mar 28 15:15:46 2023
+Submitted on 2nd April 2023
 
-@author: Hannah
+@authors: Oskar Krafft | Paul Sharratt | Fabian Metz | Amin Oueslati
 """
 
 from binarytree import BinaryTree
+from linkedqueue import LinkedQueue
 
 class LinkedBinaryTree(BinaryTree):
     """Linked representation of a binary tree structure."""
@@ -189,8 +190,80 @@ class LinkedBinaryTree(BinaryTree):
             t1._size = 0
         if not t2.is_empty():
             t2._root._parent = node
-            node._right = t2.root
+            node._right = t2._root
             t2._root = None
             t2._size = 0
-            
 
+    """define preorder traversal"""       
+    def preorder(self):
+        if not self.is_empty():
+            for p in self._subtree_preorder(self.root()):
+                yield p
+
+    def _subtree_preorder(self, p):
+        yield p
+        for c in self.children(p):
+            for other in self._subtree_preorder(c):
+                yield other
+
+    """print the tree in preorder"""
+    def print_preorder(self):
+        for p in self.preorder():
+            print(p.element(), end=' ')
+        print()  
+
+    """define postorder traversal"""
+    def postorder(self):
+        if not self.is_empty():
+            for p in self._subtree_postorder(self.root()):
+                yield p
+
+    def _subtree_postorder(self, p):
+        for c in self.children(p):
+            for other in self._subtree_postorder(c):
+                yield other
+        yield p
+
+    """print the tree in postorder"""
+    def print_postorder(self):
+        for p in self.postorder():
+            print(p.element(), end=' ')
+        print()
+    
+    """define inorder traversal"""
+    def inorder(self):
+        if not self.is_empty():
+            for p in self._subtree_inorder(self.root()):
+                yield p
+    
+    def _subtree_inorder(self, p):
+        if self.left(p) is not None:
+            for other in self._subtree_inorder(self.left(p)):
+                yield other
+        yield p
+        if self.right(p) is not None:
+            for other in self._subtree_inorder(self.right(p)):
+                yield other
+
+    """print the tree in inorder"""
+    def print_inorder(self):
+        for p in self.inorder():
+            print(p.element(), end=' ')
+        print()
+
+    """define breadth-first traversal"""
+    def breadthfirst(self):
+        if not self.is_empty():
+            fringe = LinkedQueue()
+            fringe.enqueue(self.root())
+            while not fringe.is_empty():
+                p = fringe.dequeue()
+                yield p
+                for c in self.children(p):
+                    fringe.enqueue(c)
+
+    """print the tree in breadth-first order"""
+    def print_breadthfirst(self):
+        for p in self.breadthfirst():
+            print(p.element(), end=' ')
+        print() 

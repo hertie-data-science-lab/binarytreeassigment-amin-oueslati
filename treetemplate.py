@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Mar 28 15:13:42 2023
+Submitted on 2nd April 2023
 
-@author: Hannah
+@authors: Oskar Krafft | Paul Sharratt | Fabian Metz | Amin Oueslati
 """
 
 from abc import ABC, abstractmethod

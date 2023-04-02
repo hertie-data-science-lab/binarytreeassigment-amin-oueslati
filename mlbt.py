@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Mar 28 15:31:59 2023
+Submitted on 2nd April 2023
 
-@author: Hannah
+@authors: Oskar Krafft | Paul Sharratt | Fabian Metz | Amin Oueslati
 """
 
 from linkedbinarytree import LinkedBinaryTree
@@ -28,4 +28,4 @@ class MutableLinkedBinaryTree(LinkedBinaryTree):
         return self._delete(p)
         
     def attach(self, p, T1, T2):
-        return self.attach(p, T1, T2)
+        return self._attach(p, T1, T2)

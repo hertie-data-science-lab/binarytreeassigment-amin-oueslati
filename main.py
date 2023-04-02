@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Mar 28 15:18:23 2023
+Submitted on 2nd April 2023
 
-@author: Hannah
+@authors: Oskar Krafft | Paul Sharratt | Fabian Metz | Amin Oueslati
 """
 
 from mlbt import MutableLinkedBinaryTree
@@ -25,8 +25,15 @@ lbt.add_right(l, 5)
 lbt.add_left(r, 6)
 lbt.add_right(r, 7)
 
-
-
 print(len(lbt))
 print(lbt.height(lbt.root()))
 print()
+
+"""test of traversal methods:
+In a Binary Tree, the complexity of the traversal methods is O(n) - whether done recursively or iteratively - since each node is visited exactly once.
+We also created an additional breadth-first traversal method, going beyond the assignment's requirements. This included the creation of a linked queue class.
+"""
+lbt.print_preorder()
+lbt.print_postorder()
+lbt.print_inorder()
+lbt.print_breadthfirst()
